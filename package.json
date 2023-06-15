@@ -4,5 +4,23 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mongoose": "^7.3.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "note_master",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrea-massa/note_master.git"
+  },
+  "author": "Andrea Massa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrea-massa/note_master/issues"
+  },
+  "homepage": "https://github.com/andrea-massa/note_master#readme",
+  "description": ""
 }
