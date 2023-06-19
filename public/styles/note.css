@@ -1,0 +1,11 @@
+.note{
+    background-color: #fff475;
+    border: solid #fff475 1px;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+
+.note:hover{
+    transition: opacity 0.3s;
+    opacity: 1;
+}

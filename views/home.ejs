@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteMaster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/new-note-form.css">
+    <link rel="stylesheet" href="/styles/note.css">
 </head>
 
 
 
 <body>
 
-    <main>
-        <h1>NoteMaster</h1>
-        <div id="notes-container">
-            <% notes.forEach(note => { %>
-                <%- include('includes/note', {note}) %>
-            <% }); %>
+    <main class="container-fluid">
+
+        <!-- DIV CONTAINING THE FORM TO ADD A NEW NOTE -->
+        <div class="container border my-5" id="new-note-form-container">
+            <div class="row justify-content-center">
+                <%- include('includes/new-note-form') %>
+            </div>
+        </div>
+
+        <!-- DIV CONTAINING ALL THE NOTES -->
+        <div class="container border my-5" id="notes-container">
+            <div class="row justify-content-center">
+                <% notes.forEach(note => { %>
+                    <%- include('includes/note', {note}) %>
+                <% }); %>
+            </div>
         </div>        
+
     </main>
 
 </body>
