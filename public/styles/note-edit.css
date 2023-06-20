@@ -1,0 +1,30 @@
+.note-edit-container{
+    background-color: #fff475;
+    border: solid #fff475 1px;
+    border-radius: 5px;
+    height: 40vh;
+}
+    .note-edit-container form{
+        height: 100%;        
+        display: flex;
+        flex-direction: column;        
+    }  
+        .note-edit-container form input, .note-edit-container form input:focus,
+        .note-edit-container form textarea, .note-edit-container form textarea:focus{
+            background-color: #fff475;
+            border: none;            
+        }        
+            .note-edit-container form .note-title{
+                font-size: 30px;                
+                font-weight: 600;
+                margin: 10px 5px 5px 5px;
+            }
+            .note-edit-container form hr{
+                margin: 5px 0px 60px 0px;
+            }
+            .note-edit-container form .note-content{
+                margin: 20px 5px 30px 5px;
+            }
+            .note-edit-container form .note-edit-form-button-container{
+                margin: 100px 10px 0px 10px;
+            }

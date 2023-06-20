@@ -1,9 +1,29 @@
 <!-- Div contaning a note -->
                 <div class="border col-10 col-md-6 col-lg-4 m-2 note">
-                    <h3 class="text-center my-2"><%= note.title %></h3>
+                    <h3 class="text-center my-2 note-title"><%= note.title %></h3>
                     <hr>
-                    <p class="my-2"><%= note.content %></p>      
-                    <form action="/note?_method=DELETE" method="POST" class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-danger btn-sm my-1">X</button>
-                    </form>                  
+                    <p class="my-2 note-content"><%= note.content %></p>  
+                    <div class="d-flex justify-content-end note-buttons-container">                        
+                        <button class="btn btn-warning btn-sm my-1 mx-1 note-edit-button">
+                            Edit
+                        </button>
+                        <form action="/note?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm my-1 mx-1 note-delete-button">
+                                Delete
+                            </button>
+                        </form> 
+                    </div>                                                           
+                </div>
+
+                <div class="border col-10 col-md-8 m-2 note-edit-container hidden">                    
+                    <form action="/note?_method=PUT" method="POST">                        
+                        <input class="form-control note-title" type="text" value="<%= note.title %>">
+                        <hr>
+                        <textarea class="form-control note-content" rows="40"><%= note.content %></textarea>
+                        <div class="d-flex justify-content-end note-edit-form-button-container">
+                            <a href="/">Back</a>
+                            <button type="button" class="btn btn-danger btn-sm my-1 mx-1">Discard</button>
+                            <button type="submit" class="btn btn-success btn-sm my-1 mx-1">Confirm</button>
+                        </div>
+                    </form>                
                 </div>

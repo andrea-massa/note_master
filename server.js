@@ -27,7 +27,7 @@ server.listen(3000, () => {
 const notes = [
     {
         title: 'Workout',
-        content: 'Push Workout',             
+        content: 'Push Workout, Pull Workout and Leg Workouts are the three types of workouts to do. On monday we do push on wednesday legs and on friday pull',             
     },
     {
         title: 'Recipes',
