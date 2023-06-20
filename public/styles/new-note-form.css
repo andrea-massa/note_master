@@ -8,9 +8,16 @@
     border: solid grey 1px;
     border-radius: 100px;
 }
-#new-note-form button:hover{
-    color: black;
-    background-color: lightgrey;
-    border: solid grey 1px;
-    border-radius: 100px;
+    #new-note-form button:enabled{
+        box-shadow: 0.25px 0.25px 1px 0.25px;
+    }
+    #new-note-form button:hover{
+        color: black;
+        background-color: lightgrey; 
+    }
+
+
+
+.hidden{
+    display: none;
 }
