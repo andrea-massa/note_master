@@ -1,6 +1,7 @@
 // IMPORTS
 const express = require('express');
 const ejs = require('ejs');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
@@ -23,40 +24,68 @@ server.listen(3000, () => {
 
 
 
-// TEMPORARY CONTAINER FOR NOTES WILL BE REPLACED BY DATABASE
-const notes = [
-    {
-        title: 'Workout',
-        content: 'Push Workout, Pull Workout and Leg Workouts are the three types of workouts to do. On monday we do push on wednesday legs and on friday pull',             
+//DATABASE
+mongoose.connect('mongodb://127.0.0.1:27017/noteMaster?directConnection=true')
+    .then(() => {console.log('Connection to DB was sucessful')})
+    .catch((e) => {console.log('Error Connecting to DB:\n' + e)})
+
+// Note Schema and model
+noteSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: false
     },
-    {
-        title: 'Recipes',
-        content: 'This is a veriety of recipes',             
-    },
-]
+    content: {
+        type: String,
+        required: true
+    }
+})
+const Notes = mongoose.model('note', noteSchema);
+
 
 
 
 // ROUTES
 
 // Get route for homepage which displays all the notes
-server.get('/', (req, res) => {
-    res.render('home', {notes});
+server.get('/', async(req, res) => {
+    try {
+        let notes = await Notes.find({});
+        res.render('home', {notes});
+    } catch (error) {
+        res.send(error);
+    }    
 })
 
 // Post route for a note which creates a new note
-server.post('/note', (req, res) => {
-    let {title, content} = req.body;
-    notes.push({title, content})
-    res.redirect('/')
+server.post('/note', async(req, res) => {
+    try {
+        let {title, content} = req.body;
+        await new Notes({title, content}).save();
+        res.redirect('/')    
+    } catch (error) {
+        res.send(error);   
+    }    
 })
 
 // Delete Route for a note which deletes a given note
-server.delete('/note', (req, res) => {
-    res.send('NOTE DELETE ROUTE HIT')
+server.delete('/note/:noteId', async(req, res) => {
+    try {
+        await Notes.findByIdAndDelete(req.params.noteId);
+        res.redirect('/')
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 // Put Route for a note which Modifies a given note
-server.put('/note', (res, req) => {
-    res.send('NOTE PUT ROUTE HIT')
+server.put('/note/:noteId', async(req, res) => {
+    try {
+        let id = req.params.noteId;        
+        let {new_note_title, new_note_content} = req.body;
+        await Notes.findByIdAndUpdate(id, {title: new_note_title, content: new_note_content});
+        res.redirect('/')
+    } catch (error) {
+        res.send(error)
+    }
 })
