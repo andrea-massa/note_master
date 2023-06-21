@@ -14,16 +14,5 @@
                         </form> 
                     </div>                                                           
                 </div>
-
-                <div class="col-10 col-md-8 m-2 note-edit-container hidden">                    
-                    <form action="/note?_method=PUT" method="POST">                        
-                        <input class="form-control note-title" type="text" value="<%= note.title %>">
-                        <hr>
-                        <textarea class="form-control note-content" rows="40"><%= note.content %></textarea>
-                        <div class="d-flex justify-content-end note-edit-form-button-container">
-                            <a href="/">Back</a>
-                            <button type="button" class="btn btn-danger btn-sm my-1 mx-1">Discard</button>
-                            <button type="submit" class="btn btn-success btn-sm my-1 mx-1">Confirm</button>
-                        </div>
-                    </form>                
-                </div>
+                
+                <%- include('note-edit', {note}) %>

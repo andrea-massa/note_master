@@ -37,5 +37,8 @@ html{
                 .note-edit-container > *{
                     border: solid red;
                 }
+                    .note-edit-container form > *{
+                        border: solid darkorange !important;
+                    }
 
         

@@ -3,7 +3,10 @@
     border: solid #fff475 1px;
     border-radius: 5px;
     opacity: 0.8;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}    
 
 .note:hover{
     transition: opacity 0.3s;
