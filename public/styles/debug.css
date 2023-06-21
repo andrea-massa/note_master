@@ -1,0 +1,41 @@
+html{
+    border: solid black;
+}
+    body{
+        border: solid darkgray;
+    }  
+        main{
+            border: solid grey;
+        }
+
+            /* New note form */
+            #new-note-form-container{
+                border: solid darkred;
+            }
+                #new-note-form{
+                    border: solid red;
+                }  
+                    #new-note-form > *{
+                        border: solid darkorange;
+                    }      
+                    
+            /* Note */
+            #notes-container{
+                border: solid darkred;
+            } 
+                .note{
+                    border: solid red;
+                }
+                    .note > *{
+                        border: solid darkorange;
+                    }
+            
+            /* Note in edit */
+            .note-edit-container{
+                border: solid darkred;
+            }
+                .note-edit-container > *{
+                    border: solid red;
+                }
+
+        

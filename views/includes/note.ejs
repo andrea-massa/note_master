@@ -1,5 +1,5 @@
 <!-- Div contaning a note -->
-                <div class="border col-10 col-md-6 col-lg-4 m-2 note">
+                <div class="col-10 col-md-6 col-lg-4 m-2 note">
                     <h3 class="text-center my-2 note-title"><%= note.title %></h3>
                     <hr>
                     <p class="my-2 note-content"><%= note.content %></p>  
@@ -15,7 +15,7 @@
                     </div>                                                           
                 </div>
 
-                <div class="border col-10 col-md-8 m-2 note-edit-container hidden">                    
+                <div class="col-10 col-md-8 m-2 note-edit-container hidden">                    
                     <form action="/note?_method=PUT" method="POST">                        
                         <input class="form-control note-title" type="text" value="<%= note.title %>">
                         <hr>

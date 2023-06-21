@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/new-note-form.css">
     <link rel="stylesheet" href="/styles/note.css">
     <link rel="stylesheet" href="/styles/note-edit.css">
+    <link rel="stylesheet" href="/styles/debug.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/scripts/new-note-form.js"></script>
     <script src="/scripts/note.js"></script>
@@ -22,14 +23,14 @@
     <main class="container-fluid">
 
         <!-- DIV CONTAINING THE FORM TO ADD A NEW NOTE -->
-        <div class="container border my-5" id="new-note-form-container">
+        <div class="container my-5" id="new-note-form-container">
             <div class="row justify-content-center">
                 <%- include('includes/new-note-form') %>
             </div>
         </div>
 
         <!-- DIV CONTAINING ALL THE NOTES -->
-        <div class="container border my-5" id="notes-container">
+        <div class="container my-5" id="notes-container">
             <div class="row justify-content-center">
                 <% notes.forEach(note => { %>
                     <%- include('includes/note', {note}) %>
