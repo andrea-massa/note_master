@@ -4,6 +4,7 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const Notes = require('./models/Note.js');
 
 
 
@@ -29,19 +30,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/noteMaster?directConnection=true')
     .then(() => {console.log('Connection to DB was sucessful')})
     .catch((e) => {console.log('Error Connecting to DB:\n' + e)})
 
-// Note Schema and model
-noteSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: false
-    },
-    content: {
-        type: String,
-        required: true
-    }
-})
-const Notes = mongoose.model('note', noteSchema);
 
+
+// MIDDLEWARE
+server.use((req, res, next) => {
+    console.log(`New ${req.method} from ${req.ip} on ${req.path}`);
+    next();
+})
 
 
 
