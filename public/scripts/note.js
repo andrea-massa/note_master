@@ -10,4 +10,17 @@ $(document).ready(function () {
             $(this).addClass('hidden');            
         });                
     });
+
+
+    // When modifying an existing note the confirm button should be able to be
+    // pressed only if the mofified content is not an empty string
+    $('.note-edit-container .note-title, .note-content').keyup(function(e) {
+        if($(this).val() != ''){            
+            $('.note-edit-form-button-container button').removeAttr('disabled');
+        }
+        else{
+            $('.note-edit-form-button-container button').attr('disabled', true);
+        }
+    })
+
 });

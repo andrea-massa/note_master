@@ -7,7 +7,7 @@ $(document).ready(function () {
     
 
     // Disables the submit button if content of note is empty
-    $('#new-note-form #content').change(function (e) { 
+    $('#new-note-form #content').keyup(function (e) { 
         if($(this).val() != ''){
             $('#new-note-form button').removeAttr('disabled');
         }   
