@@ -23,12 +23,31 @@ server.use(express.static(__dirname + '/public'));
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(methodOverride('_method'));
 server.use(requestLogger);
+
 server.use('/notes', noteRouter);
+
+
+
+// LOGIN & REGISTER ROUTES
+server.get('/login', (req, res) => {
+    res.render('login');
+})
+server.post('/login', (req, res) => {
+    res.send(req.body);
+})
+server.get('/register', (req, res) => {
+    // TO-DO
+    res.send('register');
+})
+server.post('register', (req, res) => {
+    // TO-DO
+})
+
+
 server.use((req, res, next) => {
     next(new AppError(404, 'Page Not Found'));    
 })
 server.use(errorHandler);
-
 
 // STARTING SERVER
 server.listen(3000, () => {
