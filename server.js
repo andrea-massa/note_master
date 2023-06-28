@@ -29,6 +29,7 @@ server.use((req, res, next) => {
 })
 server.use(errorHandler);
 
+
 // STARTING SERVER
 server.listen(3000, () => {
     console.log('SERVER LISTENING ON PORT 3000')
