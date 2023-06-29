@@ -2,7 +2,7 @@ const express = require('express');
 const controller = require('../controllers/NoteController');
 
 //Define the router
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
 
 // Get route for homepage which displays all the notes

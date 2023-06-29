@@ -4,15 +4,20 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const bcrypt = require('bcrypt');
 const AppError = require('./utils/AppError');
 const requestLogger = require('./middlewares/requestLogger');
 const errorHandler = require('./middlewares/errorHandler');
 const noteRouter = require('./routers/NoteRouter');
+const userRouter = require('./routers/UserRouter');
+
 
 //DATABASE
 mongoose.connect('mongodb://127.0.0.1:27017/noteMaster?directConnection=true')
     .then(() => {console.log('Connection to DB was sucessful')})
     .catch((e) => {console.log('Error Connecting to DB:\n' + e)})
+
 
 
 // SERVER CONFIGURATIONS
@@ -24,24 +29,10 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(methodOverride('_method'));
 server.use(requestLogger);
 
-server.use('/notes', noteRouter);
+// Route configurations
+server.use('/', userRouter)
+server.use('/:userId/notes', noteRouter);
 
-
-
-// LOGIN & REGISTER ROUTES
-server.get('/login', (req, res) => {
-    res.render('login');
-})
-server.post('/login', (req, res) => {
-    res.send(req.body);
-})
-server.get('/register', (req, res) => {
-    // TO-DO
-    res.send('register');
-})
-server.post('register', (req, res) => {
-    // TO-DO
-})
 
 
 server.use((req, res, next) => {
