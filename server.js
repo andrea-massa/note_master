@@ -28,6 +28,13 @@ server.use(express.static(__dirname + '/public'));
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(methodOverride('_method'));
 server.use(requestLogger);
+server.use(
+    session({
+      secret: 'donttellanyoneaboutthissecret', // Secret key to sign the session ID cookie
+      resave: false, // Whether to save the session if unmodified
+      saveUninitialized: false // Whether to save uninitialized sessions
+    })
+  );
 
 // Route configurations
 server.use('/', userRouter)

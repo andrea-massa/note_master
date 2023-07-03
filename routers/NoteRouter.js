@@ -1,8 +1,11 @@
 const express = require('express');
+const authenticate = require('../middlewares/authenticate');
 const controller = require('../controllers/NoteController');
 
 //Define the router
 const router = express.Router({mergeParams: true});
+// Router will use authenticate middleware for all operations
+router.use(authenticate);
 
 
 // Get route for homepage which displays all the notes

@@ -9,17 +9,19 @@ module.exports = {
     // GET USER NOTES AND DISPLAY THEM
     get: async(req, res, next) => {        
         try {                      
-            let userId = req.params.userId  ;
+            // Get user ID and populate notes based on that user ID
+            let userId = req.params.userId;
             let user = await User.findById(userId).populate('notes');
+
             // Check that user with given ID exists
-            if(await User.findById(userId) != null){
+            if(user != null){
                 // if exist render page with associated notes
                 let notes = user.notes;
                 res.render('home', {notes, userId});                
             } else{                  
                 // if non existent throw error
                 next(new AppError(404, `User with ID ${req.params.userId} does not exist`));
-            }
+            }            
         } catch (error) {
             next(new AppError(404, 'Page does not exist'));
         }   
@@ -43,7 +45,7 @@ module.exports = {
                 userID: userId
             }).save();
 
-            // Add the new not to the user
+            // Add the new note to the user
             user.notes.push(newNote);
             await user.save();
 
@@ -54,11 +56,22 @@ module.exports = {
     },
 
 
-    // TODO - ALLOW USERS TO DELETE NOTES
+    //ALLOW USERS TO DELETE NOTES
     delete: async(req, res, next) => {
         try {
-            await Notes.findByIdAndDelete(req.params.noteId);
-            res.redirect('/notes')
+            // User Id and Note ID
+            let userId = req.params.userId;
+            let noteId = req.params.noteId;
+
+            // Delete note from user collection based on note ID            
+            let user = await User.findById(userId);
+            await user.deleteNote(noteId);
+
+            // Delete note from notes collection based on note ID            
+            await Notes.findByIdAndDelete(noteId);                        
+                    
+            // redirect to user personalized homepage            
+            res.redirect(`/${userId}/notes`);
         } catch (error) {
             next(new AppError(404, 'Could not find note to delete with the given ID'));
         }
@@ -67,11 +80,17 @@ module.exports = {
 
     // TODO - ALLOW USER TO MODIFY EXISTING NOTES
     put: async(req, res, next) => {
-        try {
-            let id = req.params.noteId;        
+        try {            
+            // Get user and note id as well as new note data
+            let userId = req.params.userId
+            let noteId = req.params.noteId;                                
             let {new_note_title, new_note_content} = req.body;
-            await Notes.findByIdAndUpdate(id, {$set: {title: new_note_title, content: new_note_content}}, {runValidators: true});
-            res.redirect('/notes')
+
+            // Update note in note db
+            await Notes.findByIdAndUpdate(noteId, {$set: {title: new_note_title, content: new_note_content}}, {runValidators: true});            
+            
+            // Redirect user to personalized notes page
+            res.redirect(`/${userId}/notes`)
         } catch (error) {
             next(new AppError(404, 'Could not find note to modify with the given ID'));        
         }

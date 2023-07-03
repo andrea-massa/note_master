@@ -27,6 +27,8 @@ module.exports = {
 
                 //Check if password matches username
                 if(user.password === logPassword){
+                    // Store user data in session
+                    req.session.user = user;                    
                     res.redirect(`${user._id}/notes`);
                 }else{
                     next(new AppError(401, 'Wrong Password'))
@@ -39,6 +41,14 @@ module.exports = {
         catch(error){
             next(new AppError(401, "Authentication Failed"))
         }
+    },
+
+    
+    // LOGS OUT THE CURRENT USER
+    logout: async(req, res, next) => {
+        // TODO
+        req.session.destroy();
+        res.redirect('/login');
     },
 
 

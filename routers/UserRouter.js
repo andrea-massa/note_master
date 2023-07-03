@@ -17,7 +17,8 @@ router.get('/register', controller.registerForm);
 // Route which registers a new user
 router.post('/register', controller.register);
 
-
+// Router that logs out the user
+router.get('/logout', controller.logout)
 
 //Export the router
 module.exports = router
