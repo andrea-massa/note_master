@@ -1,20 +1,24 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const AppError = require('../utils/AppError');
 
 
 
 module.exports = {
+    // RENDERS THE LOGIN FORM
     loginForm: (req, res, next) => {
         res.render('login');
     },
 
 
+    // RENDERS THE REGISTER FORM
     registerForm: (req, res, next) => {
         res.render('register');
     },
 
 
+    // HANDLES USER LOGIN REQUEST
     login: async(req, res, next) => {     
         try {
             // Save username and password from front end
@@ -26,16 +30,19 @@ module.exports = {
             if(user != null){
 
                 //Check if password matches username
-                if(user.password === logPassword){
+                if(await bcrypt.compare(logPassword, user.password)){
+
                     // Store user data in session
-                    req.session.user = user;                    
+                    req.session.user = user;     
+                    user.isLoggedIn = true; 
+                    await user.save();              
                     res.redirect(`${user._id}/notes`);
                 }else{
-                    next(new AppError(401, 'Wrong Password'))
+                    throw error;
                 }   
 
             }else{
-                next(new AppError(401, 'No Such Username Found'))
+                throw error;
             }
         }
         catch(error){
@@ -44,14 +51,26 @@ module.exports = {
     },
 
     
-    // LOGS OUT THE CURRENT USER
-    logout: async(req, res, next) => {
-        // TODO
-        req.session.destroy();
-        res.redirect('/login');
+    // LOGS OUT THE CURRENT USER THAT SUBMITS THE LOG IN FORM
+    logout: async(req, res, next) => { 
+        try {
+            // Find active user
+            let user = await User.findById(req.session.user._id);
+
+            // For debugging make sure user is marked as logged out
+            user.isLoggedIn = false;        
+            await user.save();
+
+            // Destroy session so that user is officially logged out
+            req.session.destroy();        
+            res.redirect('/login');
+        } catch (error) {
+            throw new AppError(401, 'Failed to Authenticate, please go back to log in page');
+        }               
     },
 
 
+    // REGISTERS A NEW USER THAT SUBMITS THE REGISTER FORM
     register: async(req, res, next) => {   
         try {
             // Save username and password from front end
@@ -66,7 +85,7 @@ module.exports = {
             //Save new user to db
             let user = await new User({
                 username : regUsername,
-                password: regPassword
+                password: await hashPassword(regPassword) //hash the password
             }).save()         
             
             // Redirect user to its personalized homepage
@@ -75,5 +94,13 @@ module.exports = {
             next(new AppError(400, "Error Registering, Missing Data"))
         }
     }
+}
 
+
+
+
+// Helper function to hash password
+async function hashPassword(plainPassword){  
+    const hashedPw = bcrypt.hash(plainPassword, 12);
+    return hashedPw
 }

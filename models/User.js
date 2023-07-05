@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    isLoggedIn:{
+        type: Boolean,
+    },
     notes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Note'
