@@ -1,11 +1,11 @@
 <!-- Div for the pop up allowing you to edit the note -->
                 <div class="col-10 col-md-8 m-2 note-edit-container hidden">                    
-                    <form action="/<%= userId %>/notes/<%= note._id %>?_method=PUT" method="POST">                        
+                    <form action="/<%= userData.userId %>/notes/<%= note._id %>?_method=PUT" method="POST">                        
                         <input class="form-control note-title" type="text" name="new_note_title" value="<%= note.title %>">
                         <hr>
                         <textarea class="form-control note-content" rows="40" name="new_note_content"><%= note.content %></textarea>
                         <div class="d-flex justify-content-end note-edit-form-button-container">
-                            <a href="/<%= userId %>/notes" class="btn btn-danger btn-sm my-1 mx-1">Discard</a>
+                            <a href="/<%= userData.userId %>/notes" class="btn btn-danger btn-sm my-1 mx-1">Discard</a>
                             <button type="submit" class="btn btn-success btn-sm my-1 mx-1" disabled>Confirm</button>
                         </div>
                     </form>                

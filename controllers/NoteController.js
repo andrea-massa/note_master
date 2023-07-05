@@ -17,7 +17,11 @@ module.exports = {
             if(user != null){
                 // if exist render page with associated notes
                 let notes = user.notes;
-                res.render('home', {notes, userId});                
+                let userData = {
+                    userId : user._id ,
+                    username: user.username
+                }
+                res.render('home', {notes, userData});                
             } else{                  
                 // if non existent throw error
                 next(new AppError(404, `User with ID ${req.params.userId} does not exist`));

@@ -1,6 +1,9 @@
 body{
     background-color: aliceblue;
 }
+    main{
+        margin-top: 150px;
+    }
 
 
 .hidden{
