@@ -1,19 +1,17 @@
 $(document).ready(function () {
 
-    // Show the title only once user clicks on take note    
-    $('#new-note-form #content').click(function (e) {         
-        $('#new-note-form #title').removeClass('hidden');
-    }); 
-    
-
     // Disables the submit button if content of note is empty
+    // and show the title and color-selector only once user clicks/starts typing on take note    
     $('#new-note-form #content').keyup(function (e) { 
         if($(this).val() != ''){
+            $('#new-note-form #title').removeClass('hidden');
+            $('#new-note-form #color-selector').removeClass('hidden');
             $('#new-note-form button').removeAttr('disabled');
         }   
         else{
             $('#new-note-form button').attr('disabled', true);
             $('#new-note-form #title').addClass('hidden');            
+            $('#new-note-form #color-selector').addClass('hidden');        
         }     
     });
 
@@ -23,6 +21,7 @@ $(document).ready(function () {
         $('#new-note-form #content').val('');  
         $('#new-note-form #title').val('');
         $('#new-note-form #title').addClass('hidden');     
+        $('#new-note-form #color-selector').addClass('hidden');  
     });
     
 

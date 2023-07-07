@@ -1,14 +1,13 @@
 <!-- Form that submits a new note -->
                 <form class="col col-md-6 text-center" method="POST" action="/<%= userData.userId %>/notes" id="new-note-form">                    
                     <input type="text" class="form-control my-2 hidden" id="title" name="title" placeholder="Title: ">
-                    <textarea class="form-control my-2" id="content" name="content" placeholder="Take a note..."></textarea>                    
-                    <!-- <input type="color" class="form-control form-control-color" id="color" name="color" value="#fff475" title="Note Color: "> -->
-                    <select name="color" class="form-select" aria-label="Color Select">
-                        <option id="yellow-color-selector" value="#fff475"></option>
-                        <option id="red-color-selector" value="#f28b82"></option>                        
-                        <option id="blue-color-selector" value="#aecbfa"></option>                        
-                        <option id="green-color-selector" value="#ccff90"></option>                                                
-                        <option id="gray-color-selector" value="#e8eaed"></option>                        
+                    <textarea class="form-control my-2" id="content" name="content" placeholder="Take a note..."></textarea>                                                            
+                    <select class="form-select hidden" name="color" id="color-selector" size="4" aria-label="Color Select">
+                        <option id="yellow-color-option" value="#fff475" selected></option>
+                        <option id="red-color-option" value="#f28b82"></option>                        
+                        <option id="blue-color-option" value="#aecbfa"></option>                        
+                        <option id="green-color-option" value="#ccff90"></option>                                                
+                        <option id="gray-color-option" value="#e8eaed"></option>                        
                     </select>
                     <button type="submit" class="btn btn-primary my-2" disabled>+</button>
                 </form>

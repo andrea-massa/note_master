@@ -86,8 +86,8 @@ module.exports = {
     // TODO - ALLOW USER TO MODIFY EXISTING NOTES
     put: async(req, res, next) => {
         try {            
-            // Get user and note id as well as new note data
-            let userId = req.params.userId
+            // Get user and note id as well as new note data            
+            let userId = req.params.userId;
             let noteId = req.params.noteId;                                
             let {new_note_title, new_note_content} = req.body;
 

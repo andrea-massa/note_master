@@ -8,13 +8,50 @@
     border: solid grey 1px;
     border-radius: 100px;
 }
+
+    /* Color selector */
+    #new-note-form #color-selector{        
+        height: 40px;
+        display: block;
+        text-align: center;
+        background-color: transparent;        
+        border: none;        
+        overflow: hidden;
+    }    
+        #color-selector option{
+            margin: auto 10px auto 10px;
+            width: 20px;                        
+            display: inline-block;            
+            border: solid darkgrey 1px;
+            border-radius: 50px;            
+        }
+        #color-selector option:hover{
+            cursor: pointer;
+        }
+            #yellow-color-option{
+                background-color: #fff475;
+            }
+            #red-color-option{
+                background-color: #f28b82;
+            }
+            #blue-color-option{
+                background-color: #aecbfa;
+            }
+            #green-color-option{
+                background-color: #ccff90;
+            }
+            #gray-color-option{
+                background-color: #e8eaed;
+            }
+
+    /* Submit Button */
     #new-note-form button:enabled{
         box-shadow: 0.25px 0.25px 1px 0.25px;
     }
     #new-note-form button:hover{
         color: black;
         background-color: lightgrey; 
-    }
+    }    
 
 
 
