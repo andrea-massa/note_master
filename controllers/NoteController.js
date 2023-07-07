@@ -36,7 +36,7 @@ module.exports = {
     post: async(req, res, next) => {
         try {                        
             // Get new note fields
-            let {title, content} = req.body;
+            let {title, content, color} = req.body;
             let userId = req.params.userId;
 
             // Find associated user
@@ -46,6 +46,7 @@ module.exports = {
             let newNote = await new Notes({
                 title: title,
                 content: content,
+                color: color,
                 userID: userId
             }).save();
 

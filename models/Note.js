@@ -10,10 +10,16 @@ const noteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    color: {
+        type: String,
+        // enum: [],
+        default: '#fff475',                
+        required: true,
+    },
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    }
+    }    
 })
 
 module.exports = mongoose.model('Note', noteSchema);

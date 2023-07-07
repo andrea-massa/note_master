@@ -8,6 +8,20 @@ html{
             border: solid grey;
         }
 
+            /* Navbar */
+            nav{
+                border: solid black,                
+            }
+                .navbar-brand{
+                    /* border: solid darkgray; */
+                }
+                .navbar-toggler, .navbar-toggler-icon{
+                    border: solid gray;
+                }
+                .nav-item, .nav-link{
+                    border: solid gray;
+                }
+
             /* New note form */
             #new-note-form-container{
                 border: solid darkred;

@@ -65,7 +65,7 @@ module.exports = {
             req.session.destroy();        
             res.redirect('/login');
         } catch (error) {
-            next (new AppError(401, 'Failed to Authenticate, please go back to log in page'));
+            next (new AppError(401, 'You have been logged out, please log back in to look at your notes'));
         }               
     },
 
