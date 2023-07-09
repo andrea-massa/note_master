@@ -9,7 +9,8 @@
     "mongoose": "^7.3.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start-nodemon": "nodemon server.js"
   },
   "name": "note_master",
   "version": "1.0.0",

@@ -5,13 +5,15 @@ $(document).ready(function () {
     $('#new-note-form #content').keyup(function (e) { 
         if($(this).val() != ''){
             $('#new-note-form #title').removeClass('hidden');
-            $('#new-note-form #color-selector').removeClass('hidden');
+            $('#new-note-form .color-selector').removeClass('hidden');
+            $('#new-note-form .color-selector').addClass('show');
             $('#new-note-form button').removeAttr('disabled');
         }   
         else{
             $('#new-note-form button').attr('disabled', true);
             $('#new-note-form #title').addClass('hidden');            
-            $('#new-note-form #color-selector').addClass('hidden');        
+            $('#new-note-form .color-selector').addClass('hidden');
+            $('#new-note-form .color-selector').removeClass('show');        
         }     
     });
 

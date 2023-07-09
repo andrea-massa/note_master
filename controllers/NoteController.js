@@ -89,10 +89,10 @@ module.exports = {
             // Get user and note id as well as new note data            
             let userId = req.params.userId;
             let noteId = req.params.noteId;                                
-            let {new_note_title, new_note_content} = req.body;
+            let {new_note_title, new_note_content, color} = req.body;
 
             // Update note in note db
-            await Notes.findByIdAndUpdate(noteId, {$set: {title: new_note_title, content: new_note_content}}, {runValidators: true});            
+            await Notes.findByIdAndUpdate(noteId, {$set: {title: new_note_title, content: new_note_content, color: color}}, {runValidators: true});            
             
             // Redirect user to personalized notes page
             res.redirect(`/${userId}/notes`)

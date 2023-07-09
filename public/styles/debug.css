@@ -55,4 +55,12 @@ html{
                         border: solid darkorange !important;
                     }
 
+            /* Color picker component */                
+            .color-selector{
+                border: solid grey;
+            }            
+                .color-selector option{                    
+                    border: solid lightgrey;
+                }
+
         

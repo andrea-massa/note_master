@@ -1,8 +1,6 @@
-.note-edit-container{
-    background-color: #fff475;
-    border: solid #fff475 1px;
+.note-edit-container{        
     border-radius: 5px;
-    height: 40vh;
+    height: 50vh;
 }
     .note-edit-container form{
         height: 100%;        
@@ -12,7 +10,7 @@
     }  
         .note-edit-container form input, .note-edit-container form input:focus,
         .note-edit-container form textarea, .note-edit-container form textarea:focus{
-            background-color: #fff475;
+            background-color: inherit;
             border: none;            
         }        
             .note-edit-container form .note-title{
