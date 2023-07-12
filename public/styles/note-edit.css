@@ -1,4 +1,5 @@
-.note-edit-container{        
+.note-edit-container{     
+    transition: 1s linear;   
     border-radius: 5px;
     height: 50vh;
 }
