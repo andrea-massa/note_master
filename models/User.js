@@ -36,11 +36,10 @@ const userSchema = new mongoose.Schema({
         // TODO
         async deleteAllNotes() {
             try {                
-                // Delete all notes under the current users
-
+                // Delete all notes under the current users                
 
                 //Delete all notes from the given DB given the user ID
-
+                
 
             } catch (error) {
                 throw new AppError(404, `Error deleting all notes for user ${this._id}`);

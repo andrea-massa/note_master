@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const AppError = require('./utils/AppError');
 const requestLogger = require('./middlewares/requestLogger');
 const errorHandler = require('./middlewares/errorHandler');
@@ -15,7 +16,7 @@ const userRouter = require('./routers/UserRouter');
 
 
 //DATABASE
-mongoose.connect(process.env.DB_LOCAL_CONNECTION_URL)
+mongoose.connect(process.env.DB_ATLAS_CONNECTION_URL)
     .then(() => {console.log('Connection to DB was sucessful')})
     .catch((e) => {console.log('Error Connecting to DB:\n' + e)})
 
@@ -42,7 +43,11 @@ server.use(
     session({
       secret: process.env.SESSION_SECRET, // Secret key to sign the session ID cookie
       resave: false, // Whether to save the session if unmodified
-      saveUninitialized: false // Whether to save uninitialized sessions
+      saveUninitialized: false, // Whether to save uninitialized sessions
+      cookie: { maxAge: 15 * 60 * 1000 }, //15 minutes age for the cookie
+      store: MongoStore.create({
+        mongoUrl: process.env.DB_ATLAS_CONNECTION_URL       
+      })
     })
   );
 
