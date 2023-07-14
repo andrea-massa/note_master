@@ -24,8 +24,8 @@ mongoose.connect(process.env.DB_ATLAS_CONNECTION_URL)
 
 //STARTING SERVER
 const server = express();
-server.listen(3000, () => {
-  console.log('SERVER LISTENING ON PORT 3000')
+server.listen(3000 || process.env.PORT, () => {
+  console.log(`SERVER LISTENING ON PORT ${process.env.port}`)
 })
 
 
