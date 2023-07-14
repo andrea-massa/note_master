@@ -1,23 +1,37 @@
-#new-note-form button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    padding: 10px 18px 10px 18px;
-    color: grey;
-    background-color: aliceblue;
-    border: solid grey 1px;
-    border-radius: 100px;
-}
-
-
-    /* Submit Button */
-    #new-note-form button:enabled{
-        box-shadow: 0.25px 0.25px 1px 0.25px;
+#new-note-form{
+    background-color: #fff475;
+    border-radius: 30px;
+}    
+    #new-note-form .form-control, .color-selector, #new-note-form button{
+        position: relative;
+        top: 20px;
     }
-    #new-note-form button:hover{
-        color: black;
-        background-color: lightgrey; 
-    }    
+    #new-note-form input[type="text"], #new-note-form textarea{
+        background-color: inherit;
+        border: none;
+    }
+    #new-note-form button{        
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 10px 18px 10px 18px;
+        color: grey;
+        border: none;
+        background-color: lightgrey;        
+        border-radius: 100px;
+        opacity: 1;
+    }
+
+
+        /* Submit Button */
+        #new-note-form button:enabled{
+            box-shadow: 0.25px 0.25px 1px 0.25px;
+            background-color: white;
+        }
+        #new-note-form button:hover{
+            color: black;
+            background-color: lightgrey; 
+        }    
 
 
 
