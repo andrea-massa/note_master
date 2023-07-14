@@ -11,3 +11,7 @@ body{
 .show{
     display: block !important;
 }
+
+input:focus{
+    outline: none;
+}
