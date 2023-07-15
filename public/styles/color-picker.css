@@ -6,7 +6,11 @@
         background-color: transparent;        
         border: none;        
         overflow: hidden;
-    }    
+    }  
+    .color-selector:focus, .color-selector option:focus{
+        background-color: inherit;        
+        box-shadow: none;
+    }  
         .color-selector option{
             margin: auto 10px auto 10px;
             width: 20px;                        

@@ -15,13 +15,22 @@ function enableNoteSubmission(event){
     }     
 }
 
-function animateForm(event){    
-    alert('Working');
+// Changes the note color whenever the user clicks on a color in the 
+// color picker
+function changeNewNoteColor(event){    
+    console.log('running new');
+    // get the current color of the color picker
+    let color = $('select[name="color"]').val();
+    //set the new note form to be that color
+    $('#new-note-form').css('background-color', color);    
 }
+
+
 
 $(document).ready(function () {    
     $('#new-note-form #content').click(enableNoteSubmission);      
-    $('#new-note-form #content').keyup(enableNoteSubmission);        
+    $('#new-note-form #content').keyup(enableNoteSubmission);                
+    $('#new-note-form .color-selector').change(changeNewNoteColor);
 
     //When form is submitted, make sure that the values are set empty
     $('#new-note-form').submit(function (e) {     

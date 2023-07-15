@@ -4,11 +4,11 @@ form{
     padding-top: 30px;
     padding-bottom: 30px;
 }
-    form #login-form-header{
+    form #login-form-header, #register-form-header{
         padding-left: 20px;
         padding-right: 20px;
     }
-    form .login-field-container{
+    form .login-field-container, .register-field-container{
         padding-right: 30px;
         padding-left: 30px;
     }

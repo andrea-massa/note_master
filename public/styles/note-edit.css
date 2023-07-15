@@ -1,6 +1,5 @@
 .note-edit-container{     
-    transition: 1s linear;   
-    border-radius: 5px;
+    border-radius: 30px;
     height: 50vh;
 }
     .note-edit-container form{
@@ -12,7 +11,8 @@
         .note-edit-container form input, .note-edit-container form input:focus,
         .note-edit-container form textarea, .note-edit-container form textarea:focus{
             background-color: inherit;
-            border: none;            
+            border: none;                        
+            box-shadow: none;
         }        
             .note-edit-container form .note-title{
                 font-size: 30px;                

@@ -1,4 +1,15 @@
+// Changes the note color whenever the user clicks on a color in the 
+// color picker
+function changeNoteEditColor(event){    
+    console.log(' RUNNING edit');
+    let color = $(this).val();
+    //set the new note form to be that color
+    $(this).parent().parent().parent().css('background-color', color);    
+}
+
+
 $(document).ready(function () {
+    $('.note-edit-container form .d-flex .color-selector').change(changeNoteEditColor);
 
     // Clicking on the Edit Button renderes the edit menu visible and all the other notes invisible
     $('.note-edit-button').click(function (e) {         
