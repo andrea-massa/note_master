@@ -10,6 +10,10 @@
         background-color: inherit;
         border: none;
     }
+    #new-note-form input[type="text"]:focus, #new-note-form textarea:focus{
+        background-color: inherit;        
+        box-shadow: none;
+    }
     #new-note-form button{        
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
