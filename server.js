@@ -16,7 +16,7 @@ const userRouter = require('./routers/UserRouter');
 
 
 //DATABASE
-mongoose.connect(process.env.DB_LOCAL_CONNECTION_URL)
+mongoose.connect(process.env.DB_ATLAS_CONNECTION_URL)
     .then(() => {console.log('Connection to DB was sucessful')})
     .catch((e) => {console.log('Error Connecting to DB:\n' + e)})
 
@@ -46,7 +46,7 @@ server.use(
       saveUninitialized: false, // Whether to save uninitialized sessions
       cookie: { maxAge: 15 * 60 * 1000 }, //15 minutes age for the cookie
       store: MongoStore.create({
-        mongoUrl: process.env.DB_LOCAL_CONNECTION_URL       
+        mongoUrl: process.env.DB_ATLAS_CONNECTION_URL       
       })
     })
   );
