@@ -46,7 +46,7 @@ module.exports = {
             }
         }
         catch(error){
-            next(new AppError(401, "Authentication Failed"))
+            next(new AppError(401, "Wrong Username or Password"))
         }
     },
 
@@ -65,7 +65,7 @@ module.exports = {
             req.session.destroy();        
             res.redirect('/login');
         } catch (error) {
-            next (new AppError(401, 'You have been logged out, please log back in to look at your notes'));
+            next (new AppError(401, 'You have been logged out, please log back in'));
         }               
     },
 
